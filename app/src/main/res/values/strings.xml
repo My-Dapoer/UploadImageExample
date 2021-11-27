@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TestApp2</string>
+    <string name="upload">Upload</string>
+    <string name="image_dari_server">Image Dari Server</string>
+</resources>
