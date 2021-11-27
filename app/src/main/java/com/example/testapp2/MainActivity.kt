@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                         .into(binding.imageServer)
                     binding.lyImageServer.toVisible()
 
-                    showToast("succcess:${body.message}")
+                    showToast(body.message)
 
                 } else { // error dari server
                     showToast("error:${response.body()?.message}")
