@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
             toastError("Ambil gambar dulu bro")
             return
         }
+        binding.loading.toVisible()
 
         // cenvert dari file ke multipartBody
         val mFile = fileImage.toMultipartBody("file") // "file" ganti dgn nama parameter
@@ -76,6 +77,7 @@ class MainActivity : AppCompatActivity() {
         // kirim ke server
         ApiConfig.provideApiService.upload(mFile).enqueue(object : Callback<ResponseModel> {
             override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
+                binding.loading.toGone()
                 if (response.isSuccessful) { // check jika success
                     // jika success ambil data dari server
                     // body yg didapat dari server
@@ -100,6 +102,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
+                binding.loading.toGone()
                 showToast("error:${t.message}")
             }
         })
